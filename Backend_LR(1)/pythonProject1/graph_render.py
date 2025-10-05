@@ -3,7 +3,6 @@ from pythonProject1.afd_lr1 import AfnNode,AfdNode
 
 
 def create_AFNgraph(node:AfnNode, graph:Digraph)->None:
-
     if node is None:
         return
     id=node.get_rule()

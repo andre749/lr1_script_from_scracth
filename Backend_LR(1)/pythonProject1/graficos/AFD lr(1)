@@ -1,432 +1,155 @@
 digraph {
-	"S -> . , $
-S -> . b , $
-S -> . a , $
-S -> . b S b , $
-S' -> . S , $
-S -> . a S a , $
-" [label="S -> . , $
-S -> . b , $
-S -> . a , $
-S -> . b S b , $
-S' -> . S , $
-S -> . a S a , $
+	"B -> . , $
+E -> . B , $
+A -> . 1 , +
+B -> . 3 , $
+A -> . 2 , +
+S' -> . E , $
+B -> . 4 , $
+A -> . , +
+E -> . A + B , $
+" [label="B -> . , $
+E -> . B , $
+A -> . 1 , +
+B -> . 3 , $
+A -> . 2 , +
+S' -> . E , $
+B -> . 4 , $
+A -> . , +
+E -> . A + B , $
 "]
-	"S -> . , a
-S -> a . S a , $
-S -> . a , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . , $
-" [label="S -> . , a
-S -> a . S a , $
-S -> . a , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . , $
+	"B -> 3 . , $
+" [label="B -> 3 . , $
 "]
-	"S -> a S . a , $
-" [label="S -> a S . a , $
+	"B -> . , $
+E -> . B , $
+A -> . 1 , +
+B -> . 3 , $
+A -> . 2 , +
+S' -> . E , $
+B -> . 4 , $
+A -> . , +
+E -> . A + B , $
+" -> "B -> 3 . , $
+" [label=3]
+	"E -> A . + B , $
+" [label="E -> A . + B , $
 "]
-	"S -> a S a . , $
-" [label="S -> a S a . , $
+	"E -> A + . B , $
+B -> . 3 , $
+B -> . 4 , $
+B -> . , $
+" [label="E -> A + . B , $
+B -> . 3 , $
+B -> . 4 , $
+B -> . , $
 "]
-	"S -> a S . a , $
-" -> "S -> a S a . , $
-" [label=a]
-	"S -> . , a
-S -> a . S a , $
-S -> . a , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . , $
-" -> "S -> a S . a , $
-" [label=S]
-	"S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . S b , a
-S -> b . , a
-" [label="S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . S b , a
-S -> b . , a
+	"B -> 4 . , $
+" [label="B -> 4 . , $
 "]
-	"S -> . , a
-S -> . a , a
-S -> . b S b , a
-S -> a . S a , b
-S -> . b , a
-S -> . a S a , a
-S -> a . , b
-" [label="S -> . , a
-S -> . a , a
-S -> . b S b , a
-S -> a . S a , b
-S -> . b , a
-S -> . a S a , a
-S -> a . , b
+	"E -> A + . B , $
+B -> . 3 , $
+B -> . 4 , $
+B -> . , $
+" -> "B -> 4 . , $
+" [label=4]
+	"E -> A + . B , $
+B -> . 3 , $
+B -> . 4 , $
+B -> . , $
+" -> "B -> 3 . , $
+" [label=3]
+	"E -> A + B . , $
+" [label="E -> A + B . , $
 "]
-	"S -> . , a
-S -> . a , a
-S -> a . , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . S a , a
-" [label="S -> . , a
-S -> . a , a
-S -> a . , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . S a , a
+	"E -> A + . B , $
+B -> . 3 , $
+B -> . 4 , $
+B -> . , $
+" -> "E -> A + B . , $
+" [label=B]
+	"E -> A . + B , $
+" -> "E -> A + . B , $
+B -> . 3 , $
+B -> . 4 , $
+B -> . , $
+" [label="+"]
+	"B -> . , $
+E -> . B , $
+A -> . 1 , +
+B -> . 3 , $
+A -> . 2 , +
+S' -> . E , $
+B -> . 4 , $
+A -> . , +
+E -> . A + B , $
+" -> "E -> A . + B , $
+" [label=A]
+	"S' -> E . , $
+" [label="S' -> E . , $
 "]
-	"S -> . , a
-S -> . a , a
-S -> a . , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . S a , a
-" -> "S -> . , a
-S -> . a , a
-S -> a . , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . S a , a
-" [label=a]
-	"S -> . , a
-S -> . a , a
-S -> a . , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . S a , a
-" -> "S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . S b , a
-S -> b . , a
-" [label=b]
-	"S -> a S . a , a
-" [label="S -> a S . a , a
+	"B -> . , $
+E -> . B , $
+A -> . 1 , +
+B -> . 3 , $
+A -> . 2 , +
+S' -> . E , $
+B -> . 4 , $
+A -> . , +
+E -> . A + B , $
+" -> "S' -> E . , $
+" [label=E]
+	"A -> 2 . , +
+" [label="A -> 2 . , +
 "]
-	"S -> a S a . , a
-" [label="S -> a S a . , a
+	"B -> . , $
+E -> . B , $
+A -> . 1 , +
+B -> . 3 , $
+A -> . 2 , +
+S' -> . E , $
+B -> . 4 , $
+A -> . , +
+E -> . A + B , $
+" -> "A -> 2 . , +
+" [label=2]
+	"E -> B . , $
+" [label="E -> B . , $
 "]
-	"S -> a S . a , a
-" -> "S -> a S a . , a
-" [label=a]
-	"S -> . , a
-S -> . a , a
-S -> a . , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . S a , a
-" -> "S -> a S . a , a
-" [label=S]
-	"S -> . , a
-S -> . a , a
-S -> . b S b , a
-S -> a . S a , b
-S -> . b , a
-S -> . a S a , a
-S -> a . , b
-" -> "S -> . , a
-S -> . a , a
-S -> a . , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . S a , a
-" [label=a]
-	"S -> . , a
-S -> . a , a
-S -> . b S b , a
-S -> a . S a , b
-S -> . b , a
-S -> . a S a , a
-S -> a . , b
-" -> "S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . S b , a
-S -> b . , a
-" [label=b]
-	"S -> a S . a , b
-" [label="S -> a S . a , b
+	"B -> . , $
+E -> . B , $
+A -> . 1 , +
+B -> . 3 , $
+A -> . 2 , +
+S' -> . E , $
+B -> . 4 , $
+A -> . , +
+E -> . A + B , $
+" -> "E -> B . , $
+" [label=B]
+	"A -> 1 . , +
+" [label="A -> 1 . , +
 "]
-	"S -> a S a . , b
-" [label="S -> a S a . , b
-"]
-	"S -> a S . a , b
-" -> "S -> a S a . , b
-" [label=a]
-	"S -> . , a
-S -> . a , a
-S -> . b S b , a
-S -> a . S a , b
-S -> . b , a
-S -> . a S a , a
-S -> a . , b
-" -> "S -> a S . a , b
-" [label=S]
-	"S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . S b , a
-S -> b . , a
-" -> "S -> . , a
-S -> . a , a
-S -> . b S b , a
-S -> a . S a , b
-S -> . b , a
-S -> . a S a , a
-S -> a . , b
-" [label=a]
-	"S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . , b
-" [label="S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . , b
-"]
-	"S -> b S . b , b
-" [label="S -> b S . b , b
-"]
-	"S -> b S b . , b
-" [label="S -> b S b . , b
-"]
-	"S -> b S . b , b
-" -> "S -> b S b . , b
-" [label=b]
-	"S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . , b
-" -> "S -> b S . b , b
-" [label=S]
-	"S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . , b
-" -> "S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . , b
-" [label=b]
-	"S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . , b
-" -> "S -> . , a
-S -> . a , a
-S -> . b S b , a
-S -> a . S a , b
-S -> . b , a
-S -> . a S a , a
-S -> a . , b
-" [label=a]
-	"S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . S b , a
-S -> b . , a
-" -> "S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . , b
-" [label=b]
-	"S -> b S . b , a
-" [label="S -> b S . b , a
-"]
-	"S -> b S b . , a
-" [label="S -> b S b . , a
-"]
-	"S -> b S . b , a
-" -> "S -> b S b . , a
-" [label=b]
-	"S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . S b , a
-S -> b . , a
-" -> "S -> b S . b , a
-" [label=S]
-	"S -> . , a
-S -> a . S a , $
-S -> . a , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . , $
-" -> "S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . S b , a
-S -> b . , a
-" [label=b]
-	"S -> . , a
-S -> a . S a , $
-S -> . a , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . , $
-" -> "S -> . , a
-S -> . a , a
-S -> a . , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . S a , a
-" [label=a]
-	"S -> . , $
-S -> . b , $
-S -> . a , $
-S -> . b S b , $
-S' -> . S , $
-S -> . a S a , $
-" -> "S -> . , a
-S -> a . S a , $
-S -> . a , a
-S -> . b S b , a
-S -> . b , a
-S -> . a S a , a
-S -> a . , $
-" [label=a]
-	"S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , $
-S -> . a S a , b
-S -> . a , b
-S -> b . , $
-" [label="S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , $
-S -> . a S a , b
-S -> . a , b
-S -> b . , $
-"]
-	"S -> b S . b , $
-" [label="S -> b S . b , $
-"]
-	"S -> b S b . , $
-" [label="S -> b S b . , $
-"]
-	"S -> b S . b , $
-" -> "S -> b S b . , $
-" [label=b]
-	"S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , $
-S -> . a S a , b
-S -> . a , b
-S -> b . , $
-" -> "S -> b S . b , $
-" [label=S]
-	"S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , $
-S -> . a S a , b
-S -> . a , b
-S -> b . , $
-" -> "S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , b
-S -> . a S a , b
-S -> . a , b
-S -> b . , b
-" [label=b]
-	"S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , $
-S -> . a S a , b
-S -> . a , b
-S -> b . , $
-" -> "S -> . , a
-S -> . a , a
-S -> . b S b , a
-S -> a . S a , b
-S -> . b , a
-S -> . a S a , a
-S -> a . , b
-" [label=a]
-	"S -> . , $
-S -> . b , $
-S -> . a , $
-S -> . b S b , $
-S' -> . S , $
-S -> . a S a , $
-" -> "S -> . , b
-S -> . b S b , b
-S -> . b , b
-S -> b . S b , $
-S -> . a S a , b
-S -> . a , b
-S -> b . , $
-" [label=b]
-	"S' -> S . , $
-" [label="S' -> S . , $
-"]
-	"S -> . , $
-S -> . b , $
-S -> . a , $
-S -> . b S b , $
-S' -> . S , $
-S -> . a S a , $
-" -> "S' -> S . , $
-" [label=S]
+	"B -> . , $
+E -> . B , $
+A -> . 1 , +
+B -> . 3 , $
+A -> . 2 , +
+S' -> . E , $
+B -> . 4 , $
+A -> . , +
+E -> . A + B , $
+" -> "A -> 1 . , +
+" [label=1]
+	"B -> . , $
+E -> . B , $
+A -> . 1 , +
+B -> . 3 , $
+A -> . 2 , +
+S' -> . E , $
+B -> . 4 , $
+A -> . , +
+E -> . A + B , $
+" -> "B -> 4 . , $
+" [label=4]
 }

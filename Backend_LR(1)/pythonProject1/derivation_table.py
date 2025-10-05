@@ -1,25 +1,43 @@
 
+
 from pythonProject1.afd_lr1 import AfdNode
 
-def turn_afd_into_row(afd:list[AfdNode],node:AfdNode,t:set[str])->dict[str:str]:
-    row=dict[str:str]()
+def node_to_row(afd:list[AfdNode], node:AfdNode, t:set[str])-> dict[str:str]:
+    row:dict[str:str]=dict()
     rules=node.rules
     for rule in rules:
         shift_token=rule.get_shift_token()
         if shift_token is None:
-            row[rule.search_token]=rule.to_str_without_st()
+            r=rule.to_str_without_st()
+            if rule.search_token in row.keys() and r!=row[rule.search_token]:
+
+                return {"": "Grammar is not Lr1"}
+            row[rule.search_token]=r
 
         elif shift_token in t:
-            row[shift_token]='s'+str(afd.index(node.transitions[shift_token]))
+            r='s'+str(afd.index(node.transitions[shift_token]))
+            if shift_token in row.keys() and r!= row[shift_token]:
+
+                return {"": "Grammar is not Lr1"}
+            row[shift_token]=r
         else:
-            row[shift_token] = str(afd.index(node.transitions[shift_token]))
+            r= str(afd.index(node.transitions[shift_token]))
+
+            if shift_token in row.keys() and r!= row[shift_token]:
+
+                return {"": "Grammar is not Lr1"}
+            row[shift_token] = r
     return row
+
 
 
 def make_table(afd:list[AfdNode],terminals:set[str]):
     table=list[dict[str:str]]()
     for state in afd:
-        table.append(turn_afd_into_row(afd,state,terminals))
+        row=node_to_row(afd, state, terminals)
+        if row=={"":"Grammar is not Lr1"}:
+            return [{"":"Grammar is not Lr1"}]
+        table.append(row)
     return  table
 
 class DerivationRow:
@@ -45,14 +63,26 @@ def derive_string(table:list[dict[str:str]], s:str, accept_rule)->list[Derivatio
     chars.append("$")
     rule=""
     derivation=list[DerivationRow]()
-    while rule!=accept_rule:
+    valid=True
+    invalid_message="Cadena invalida para la gramatica"
+
+    while rule!=accept_rule and valid:
+        derivation.append(DerivationRow(stack.copy(), chars.copy(), rule))
         length=len(stack)
-        last_item=stack[length-1]
-        if not isinstance(last_item,int):
-            last_item = stack[length - 2]
-            rule=table[last_item][stack[length-1]]
+        last_state=stack[length-1]
+        if not isinstance(last_state,int):
+            last_state = stack[length - 2]
+            if stack[length-1] not in table[last_state].keys():
+                valid=False
+                rule=invalid_message
+            else:
+                rule=table[last_state][stack[length-1]]
         else:
-            rule=table[last_item][chars[0]]
+            if chars[0] not in table[last_state].keys():
+                valid=False
+                rule=invalid_message
+            else:
+                rule = table[last_state][chars[0]]
         if "->" not in rule and rule[0]=="s":
             stack.append(chars.pop(0))
             stack.append(int(rule[1:]))
@@ -73,25 +103,29 @@ def derive_string(table:list[dict[str:str]], s:str, accept_rule)->list[Derivatio
                 length-=1
                 if not isinstance(top, int):
                     top_chunk.append(top)
-            stack.append(base)
-        derivation.append(DerivationRow(stack.copy(), chars.copy(), rule))
+            if rule!=invalid_message:
+                stack.append(base)
+
+
     return derivation
 
 
 def print_derivation(derivation:list[DerivationRow],s)->None:
-
+    invalid_message="Cadena invalida para la gramatica"
     max_width=0
     for st in derivation[0].input:
         max_width+=len(st)
     max_width*=5
     print("derivacion lr(1) de: "+s)
     print(" "*9+"[stack:"+" "*(max_width-6)+"]" + "[input:"+" "*(max_width-6)+"]"+"[rule:"+" "*(max_width-5)+"]")
-    i=0
+    i=1
     for paso in derivation:
         size=len(str(i))
         print(f"Paso {i}:" +" "*(3-size),end="")
         i+=1
         paso.print(max_width)
+    if derivation[len(derivation)-1].rule!=invalid_message:
+        print("Cadena aceptada")
 
 
 

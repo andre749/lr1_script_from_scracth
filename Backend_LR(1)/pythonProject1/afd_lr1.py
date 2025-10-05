@@ -1,7 +1,5 @@
 from logging import exception
 
-
-
 class NodeRule:
     def __init__(self, base: str, body: list[str], search_token: str):
         self.base = base
@@ -14,6 +12,7 @@ class NodeRule:
             s += char + " "
         s += ", " + self.search_token
         return s
+
     def is_same(self,other)->bool:
         return self.base==other.base and self.body==other.body and self.search_token==other.search_token
 
@@ -29,8 +28,6 @@ class NodeRule:
             if char!=".":
                 s+=" "+ char
         return s
-
-
 
 
 class AfnNode:
@@ -85,11 +82,10 @@ def make_afn(rules, non_t, firsts,
             if ancestor.rule.search_token==search_token and a_rule==rule and ancestor.rule.base==base :
                 return ancestor
 
-
-
     rule_with_dot=rule.copy()
     rule_with_dot.insert(dot_index,".")
     node=AfnNode(base, rule_with_dot, search_token)
+
     if dot_index == 0:
         ancestors_list.append(node)
 
@@ -97,9 +93,11 @@ def make_afn(rules, non_t, firsts,
         shift_token=None
     else:
         shift_token=rule[dot_index]
+
     node.add_child(shift_token,
                    make_afn(rules, non_t, firsts, search_token, dot_index + 1, base, rule, ancestors_list)
                    )
+
 
     if shift_token in non_t:
         rule_with_st=rule.copy()
